@@ -25,19 +25,27 @@ export const mapHouseListFromModelToApi = (
   houseList: model.House[]
 ): apiModel.House[] => houseList.map(mapHouseFromModelToApi);
 
+export const mapOneHouseListFromModelToApi = (
+  houseList: model.OneHouse[]
+): apiModel.OneHouse[] => houseList.map(mapOneHouseFromModelToApi);
+
+export const mapOneHouseFromModelToApi = (house: model.OneHouse): apiModel.OneHouse => ({
+  name: house.name
+});
+
 export const mapHouseFromApiToModel = (house: apiModel.House): model.House => ({
     _id: house.id,
     name: house.name,
     description: house.description,
-    reviews: mapHouseListFromModelToApi6(house.reviews)
+    reviews: mapReviewListFromApiTomodel(house.reviews)
 });
 
-export const mapHouseListFromModelToApi6 = (
+export const mapReviewListFromApiTomodel= (
   houseList: apiModel.Review[]
-): model.Review[] => houseList.map(mapHouseFromModelToApi7);
+): model.Review[] => houseList.map(mapReviewFromApiToModel);
 
 
-export const mapHouseFromModelToApi7 = (house: apiModel.Review ):  model.Review => ({
+export const mapReviewFromApiToModel = (house: apiModel.Review ):  model.Review => ({
   reviewer_name: house.userName,
   //releaseDate: house.releaseDate?.toISOString(),
   comments: house.comment

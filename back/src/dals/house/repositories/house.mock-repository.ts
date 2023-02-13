@@ -1,6 +1,6 @@
 import { HouseRepository } from "./house.repository";
 import { ObjectId } from "mongodb";
-import { House } from "../house.model";
+import { House, OneHouse, Review } from "../house.model";
 import { db } from "../../mock-data";
 
 const insertHouse = (house: House) => {
@@ -18,11 +18,16 @@ const updateHouse = (house:House) => {
     return house;
 };
 
+const AddReview = (house:Review) => {
+    db.houses = db.houses.map((b) => ({ ...b, ...house }));
+    return house;
+};
+
 const paginateHouseList = (
-    houseList: House[],
+    houseList: OneHouse[],
        page: number,
        pageSize: number
-    ): House[] => {
+    ): OneHouse[] => {
        let paginatedHouseList = [...houseList];
        if (page && pageSize) {
          const startIndex = (page - 1) * pageSize;
@@ -42,4 +47,5 @@ export const mockRepository:HouseRepository = {
         db.houses = db.houses.filter((b) => b._id !== id);
         return true;
     },
+    saveReview: async (review: Review) => AddReview(review),
 };

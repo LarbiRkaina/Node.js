@@ -10,3 +10,7 @@ export interface Review {
     userName: string;
     comment: string;
 }
+
+export interface OneHouse {
+    name: string;
+}

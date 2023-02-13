@@ -1,6 +1,6 @@
 import { db } from 'core/servers';
 import { HouseRepository } from "./house.repository";
-import { House } from "../house.model";
+import { House, Review } from "../house.model";
 
 export const dbRepository: HouseRepository = {
     getHouseList: async (page?: number, pageSize?: number) => {
@@ -25,4 +25,29 @@ export const dbRepository: HouseRepository = {
     deleteHouse: async (id: string) =>{
         throw new Error("Not implemented");
     },
+
+    saveReview: async (review:Review, id:string) => {
+          await db.collection<House>("listingsAndReviews").updateOne(
+            {_id :id},
+            {
+                $push : {
+                    reviews: {
+
+                    $each: [
+                        {
+                            reviewer_name: review.reviewer_name,
+                            comments: review.comments
+                        }
+                    ],
+                    }
+                }
+            });
+        
+        return {
+            ...review
+        }
+       
+    }
+
+
 }
