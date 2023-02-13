@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  book-store-db:
+    container_name: my-mongo-db
+    image: mongo:5.0
+    ports:
+      - '27017:27017'

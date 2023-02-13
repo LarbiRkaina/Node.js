@@ -1,0 +1,28 @@
+{
+  "name": "01-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p -l type-check:watch start:dev",
+    "start:dev": "nodemon --exec babel-node -r dotenv/config --extensions \".ts\" src/index.ts",
+    "start:console-runners": "npm run type-check && babel-node -r dotenv/config --extensions \".ts\" src/console-runners/index.ts",
+    "start:local-db": "docker-compose up -d",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^6.9.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "dotenv": "^16.0.3",
+    "inquirer": "^8.2.5"
+  },
+  "description": ""
+}
