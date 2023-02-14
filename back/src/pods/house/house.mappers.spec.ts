@@ -4,7 +4,7 @@ import * as apiModel from './house.api-model';
 import { mapHouseListFromApiToModel } from './house.mappers';
 
 describe('pods/house/house.mappers spec', () => {
-  describe('mapBookListFromApiToModel', () => {
+  describe('mapHouseListFromApiToModel', () => {
     it.each<apiModel.House[]>([undefined, null, []])(
       'should return empty array when it feeds houseList equals %p',
       (houseList: any) => {

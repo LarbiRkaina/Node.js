@@ -1,11 +1,9 @@
-import { ObjectId } from "mongodb";
 import * as model from "dals";
 import * as apiModel from "./house.api-model";
 
 export const mapHouseFromModelToApi = (house: model.House): apiModel.House => ({
   id: house._id,
   name: house.name,
-  //releaseDate: house.releaseDate?.toISOString(),
   description: house.description,
   bathrooms: house.bathrooms,
   beds: house.beds,

@@ -32,7 +32,7 @@ export const db: DB = {
       reviews: [
         {comments: "Un poco cara, pero buen sitio para un fin de semana",
         reviewer_name : "Manu",
-        date: new Date("<2016-11-03>")}
+        date: new Date("<2018-11-03>")}
       ]
     },
 

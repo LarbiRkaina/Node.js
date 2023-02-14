@@ -17,7 +17,6 @@ restApiServer.use(async (req, res, next) => {
 
 restApiServer.use("/api/houses", housesApi);
 
-
 restApiServer.listen(envConstants.PORT, async () => {
   if (!envConstants.isApiMock) {
     await connectToDBServer(envConstants.MONGODB_URI);
