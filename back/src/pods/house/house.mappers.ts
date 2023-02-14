@@ -56,3 +56,8 @@ export const mapReviewFromApiToModel = (house: apiModel.Review ):  model.Review 
   date: new Date (house.date),
   comments: house.comment
 });
+
+export const mapHouseListFromApiToModel = (
+  houseList: apiModel.House[]
+): model.House[] =>
+  Array.isArray(houseList) ? houseList.map(mapHouseFromApiToModel) : [];

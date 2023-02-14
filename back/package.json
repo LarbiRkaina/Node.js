@@ -8,7 +8,9 @@
     "start:console-runners": "npm run type-check && babel-node -r dotenv/config --extensions \".ts\" src/console-runners/index.ts",
     "start:local-db": "docker-compose up -d",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check -- --watch",
+    "test": "jest --verbose",
+    "test:watch": "npm run test -- --watchAll -i"
   },
   "keywords": [],
   "author": "",
