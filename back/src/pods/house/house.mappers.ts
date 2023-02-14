@@ -7,6 +7,9 @@ export const mapHouseFromModelToApi = (house: model.House): apiModel.House => ({
   name: house.name,
   //releaseDate: house.releaseDate?.toISOString(),
   description: house.description,
+  bathrooms: house.bathrooms,
+  beds: house.beds,
+  bedrooms:house.bedrooms,
   reviews: mapReviewListFromModelToApi(house.reviews)
 });
 
@@ -17,7 +20,7 @@ export const mapReviewListFromModelToApi= (
 
 export const mapReviewFromModelToApi = (house: model.Review): apiModel.Review => ({
   userName: house.reviewer_name,
-  //releaseDate: house.releaseDate?.toISOString(),
+  date: house.date?.toISOString(),
   comment: house.comments,
 });
 
@@ -37,6 +40,9 @@ export const mapHouseFromApiToModel = (house: apiModel.House): model.House => ({
     _id: house.id,
     name: house.name,
     description: house.description,
+    bathrooms: house.bathrooms,
+    beds: house.beds,
+    bedrooms:house.bedrooms,
     reviews: mapReviewListFromApiTomodel(house.reviews)
 });
 
@@ -47,6 +53,6 @@ export const mapReviewListFromApiTomodel= (
 
 export const mapReviewFromApiToModel = (house: apiModel.Review ):  model.Review => ({
   reviewer_name: house.userName,
-  //releaseDate: house.releaseDate?.toISOString(),
+  date: new Date (house.date),
   comments: house.comment
 });

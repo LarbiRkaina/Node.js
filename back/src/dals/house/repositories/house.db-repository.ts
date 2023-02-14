@@ -22,23 +22,19 @@ export const dbRepository: HouseRepository = {
         };
     },
 
-    deleteHouse: async (id: string) =>{
-        throw new Error("Not implemented");
-    },
-
     saveReview: async (review:Review, id:string) => {
           await db.collection<House>("listingsAndReviews").updateOne(
             {_id :id},
             {
                 $push : {
                     reviews: {
-
-                    $each: [
-                        {
-                            reviewer_name: review.reviewer_name,
-                            comments: review.comments
-                        }
-                    ],
+                        $each: [
+                            {
+                                reviewer_name: review.reviewer_name,
+                                comments: review.comments,
+                                date: new Date(),
+                            }
+                        ],
                     }
                 }
             });
@@ -48,6 +44,4 @@ export const dbRepository: HouseRepository = {
         }
        
     }
-
-
 }

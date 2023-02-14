@@ -1,5 +1,4 @@
 import { HouseRepository } from "./house.repository";
-import { ObjectId } from "mongodb";
 import { House, OneHouse, Review } from "../house.model";
 import { db } from "../../mock-data";
 
@@ -43,9 +42,5 @@ export const mockRepository:HouseRepository = {
     paginateHouseList(db.houses, page, pageSize),
     getHouse: async (id: string) => db.houses.find((b) => b._id === id),
     saveHouse: async (book: House) => Boolean(book._id) ? updateHouse(book) : insertHouse(book),
-    deleteHouse: async(id:string) => {
-        db.houses = db.houses.filter((b) => b._id !== id);
-        return true;
-    },
     saveReview: async (review: Review) => AddReview(review),
 };
